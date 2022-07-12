@@ -71,14 +71,19 @@ export default {
         this.operator = (a, b) => a / b
       }
       if (operator === '-') {
-        this.operator = (a, b) => a - b
+        if (this.num1 === '') {
+          this.num1 += '-'
+          operator = ''
+        } else {
+          this.operator = (a, b) => a - b
+        }
       }
       if (operator === '+') {
         this.operator = (a, b) => a + b
       }
       this.result = ''
       this.sign = ' ' + operator + ' '
-      this.num2 = this.num1
+      this.num2 += this.num1
       this.num1 = ''
     },
     expression () {
